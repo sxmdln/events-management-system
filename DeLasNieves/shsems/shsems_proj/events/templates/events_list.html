@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} All Events {% endblock %}
+{% block content %}
+<div class="card-columns">
+    {% for event in object_list %}
+    <div class="card bg-dark" style = "color:seashell; margin: 40px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+        <h3 class="card-header">{{ event.name }}</h3>
+        <div class="card-body">
+            <p class="card-text">Starts on {{ event.date_from }}
+                and ends on {{ event.date_to }}</p>
+            <a href="#!" class="btn btn-success">Join</a>
+        </div>
+        <div class="card-text" style = "margin-left: 290px;">
+            <small>Created by {{ event.creator }}</small>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'event_detail' event.pk %}"> >> </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
